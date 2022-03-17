@@ -54,7 +54,7 @@
                                 <h2 class='card-title h4'>$jsonObj->title</h2>
                                 <p class='card-text'>$jsonObj->excerpt
                                     Reiciendis aliquid atque, nulla.</p>
-                                <a class='btn btn-primary' href='#!'>Read more →</a>
+                                <a class='btn btn-primary' href='/blog_app/post.php?id=$jsonObj->id'>Read more →</a>
                             </div>
                         </div>
                         <!-- Blog post-->
