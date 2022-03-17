@@ -14,7 +14,7 @@
     <body>
         <!-- Responsive navbar-->
         <?php 
-                    $api_url='http://localhost:3000/post/$_GET["id"]';
+                    $api_url="http://localhost:3000/post/$_GET[id]";
                     $curl=curl_init($api_url);
                     curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
                     $curl_response=curl_exec($curl);

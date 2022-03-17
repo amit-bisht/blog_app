@@ -25,7 +25,7 @@ app.post("/register",(req,res)=>{
    .catch(error=>{console.log(error)})
 })
 app.get("/post/:id",(req,res)=>{
-   pool.execute('select * from post where post WHERE post.id = ?',[req.params.id])
+   pool.execute('select * from post WHERE post.id = ?',[req.params.id])
    .then(([post])=>{res.send(JSON.stringify(post[0]))})
    .catch(error=>{console.log(error)})
 })
