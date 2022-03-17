@@ -57,5 +57,11 @@ app.post("/user/post/delete",(req,res)=>{
    .then(([])=>{res.send("deleted")})
    .catch(error=>{console.log(error)})
 })
+app.post("/user/post/add",(req,res)=>{
+   const data=req.body
+   pool.execute('insert into post(title,excerpt,description,userid) values(?,?,?,?)',[data.title,data.excerpt,data.description,data.userId])
+   .then(([])=>{res.send("inserted")})
+   .catch(error=>{console.log(error)})
+})
 
 app.listen(3000)
