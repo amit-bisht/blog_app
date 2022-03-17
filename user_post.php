@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang='en'>
 
@@ -20,7 +21,8 @@
                 <!-- Nested row for non-featured blog posts-->
                 <div class='row'>
                     <?php 
-                    $api_url="http://localhost:3000/posts";
+                    $user_id=$_SESSION['userId'];
+                    $api_url="http://localhost:3000/user/post/$user_id";
                     $curl=curl_init($api_url);
                     curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
                     $curl_response=curl_exec($curl);
@@ -30,6 +32,7 @@
                     else{
                     $jsonData=json_decode($curl_response);
                     foreach($jsonData as $jsonObj){
+
                         echo "<div class='col-lg-4'>
                         <div class='card mb-4'>
                             <a href='#!'><img class='card-img-top'
@@ -39,7 +42,10 @@
                                 <h2 class='card-title h4'>$jsonObj->title</h2>
                                 <p class='card-text'>$jsonObj->excerpt
                                     Reiciendis aliquid atque, nulla.</p>
-                                <a class='btn btn-primary' href='/blog_app/post.php?id=$jsonObj->id'>Read more →</a>
+                                <form method='post' action='/blog_app/delete_post.php'>
+                                    <input type='hidden' value='$jsonObj->id' name='post-id'/>
+                                    <input type='submit' value='delete' name='delete-submit' class='btn btn-danger'/>
+                                </form>
                             </div>
                         </div>
                         <!-- Blog post-->

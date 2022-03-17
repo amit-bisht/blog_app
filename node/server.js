@@ -29,6 +29,33 @@ app.get("/post/:id",(req,res)=>{
    .then(([post])=>{res.send(JSON.stringify(post[0]))})
    .catch(error=>{console.log(error)})
 })
-
+app.post("/login",(req,res)=>{
+   pool.execute('select id,username,email from user WHERE user.email = ? and user.password= ?',[req.body.email,req.body.password])
+   .then(([user])=>{
+      console.log(user)
+      res.send(JSON.stringify(user[0]))
+   })
+   .catch(error=>{
+      console.log(error)
+      res.send(error)
+   })
+})
+app.get("/user/post/:id",(req,res)=>{
+   pool.execute('select * from post WHERE post.userid = ?',[req.params.id])
+   .then(([rows,fieldData])=>{
+      console.log(rows)
+      res.send(JSON.stringify(rows))
+   })
+   .catch(error=>{
+      console.log(error)
+      res.send(error)
+   })
+})
+app.post("/user/post/delete",(req,res)=>{
+   const data=req.body
+   pool.execute('delete from post where post.id=?',[data.id])
+   .then(([])=>{res.send("deleted")})
+   .catch(error=>{console.log(error)})
+})
 
 app.listen(3000)
