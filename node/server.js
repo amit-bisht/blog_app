@@ -59,7 +59,7 @@ app.post("/user/post/delete",(req,res)=>{
 })
 app.post("/user/post/add",(req,res)=>{
    const data=req.body
-   pool.execute('insert into post(title,excerpt,description,userid) values(?,?,?,?)',[data.title,data.excerpt,data.description,data.userId])
+   pool.execute('insert into post(title,description,userid,excerpt) Values(?,?,?,?)',[data.title,data.description,data.userId,data.excerpt])
    .then(([])=>{res.send("inserted")})
    .catch(error=>{console.log(error)})
 })

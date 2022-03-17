@@ -83,6 +83,116 @@
 				"description": "to register a user"
 			},
 			"response": []
+		},
+		{
+			"name": "/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "abc@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				},
+				"description": "to login the user"
+			},
+			"response": []
+		},
+		{
+			"name": "/user/post/id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/user/post/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"post",
+						"add"
+					]
+				},
+				"description": "to fetch the post of user logged in"
+			},
+			"response": []
+		},
+		{
+			"name": "/user/post/delete",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/post/delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"post",
+						"delete"
+					]
+				},
+				"description": "this post request will help user to delete the post"
+			},
+			"response": []
+		},
+		{
+			"name": "/user/post/add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/user/post/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"post",
+						"add"
+					]
+				},
+				"description": "this route will help in adding the post to authenticated users"
+			},
+			"response": []
 		}
 	]
 }
